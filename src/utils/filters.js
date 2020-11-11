@@ -1,8 +1,5 @@
-import moment from 'moment'
-import 'moment/locale/zh-cn'
 import numeral from 'numeral'
-
-moment.locale('zh-cn')
+import { moment } from '@/utils/index'
 
 /**
  * 格式化时间
