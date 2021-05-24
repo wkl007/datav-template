@@ -1,25 +1,21 @@
 <template>
-  <div id="app">
-    <a-config-provider :locale="locale">
-      <router-view/>
-    </a-config-provider>
-  </div>
+  <a-config-provider :locale="locale">
+    <router-view/>
+  </a-config-provider>
 </template>
 
-<script>
-import images from '@/assets/images'
-import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN'
+<script lang="ts">
+import { defineComponent } from 'vue'
+import zhCN from 'ant-design-vue/es/locale/zh_CN'
 
-export default {
-  provide: {
-    images
-  },
-  data () {
+export default defineComponent({
+  name: 'App',
+  setup () {
     return {
       locale: zhCN
     }
   }
-}
+})
 </script>
 
 <style lang="less">

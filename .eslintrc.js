@@ -4,23 +4,22 @@ module.exports = {
     node: true
   },
   extends: [
-    'plugin:vue/essential',
-    '@vue/standard'
+    'plugin:vue/vue3-essential',
+    '@vue/standard',
+    '@vue/typescript/recommended'
   ],
   parserOptions: {
-    parser: 'babel-eslint'
+    ecmaVersion: 2020
   },
   rules: {
-    'handle-callback-err': 0, // nodejs 处理错误
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // 禁止使用console
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off', // 禁止使用debugger
-    'no-unused-vars': [0, {
-      // 允许声明未使用变量
-      vars: 'local',
-      // 参数不检查
-      args: 'none'
-    }],
-    'no-undef': 0, // 不能有未定义的变量
-    'no-async-promise-executor': 0 // 将异步功能用作Promise执行器
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-use-before-define': 'off',
+    '@typescript-eslint/ban-ts-ignore': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-explicit-any': 'off'
   }
 }

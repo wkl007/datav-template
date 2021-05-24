@@ -1,11 +1,3 @@
-/*
- * @Author: Calamus
- * @Description:
- * @FilePath: /my/postcss.config.js
- * @Date: 2019-12-08 09:52:10
- * @LastEditors: Calamus
- * @LastEditTime: 2019-12-19 16:40:52
- */
 const autoprefixer = require('autoprefixer')
 const pxtoviewport = require('postcss-px-to-viewport')
 
@@ -19,7 +11,7 @@ module.exports = {
       propList: ['*', '!border', '!background'],
       viewportUnit: 'vw',
       fontViewportUnit: 'vw',
-      selectorBlackList: ['ant-', 'meow-'],
+      selectorBlackList: ['ant-'],
       minPixelValue: 1,
       mediaQuery: false,
       replace: true,

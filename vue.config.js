@@ -1,5 +1,5 @@
 const path = require('path')
-const webpack = require('webpack')
+const { IgnorePlugin } = require('webpack')
 
 const TerserPlugin = require('terser-webpack-plugin')// 去console插件
 const CompressionWebpackPlugin = require('compression-webpack-plugin')// gzip压缩插件
@@ -36,7 +36,10 @@ module.exports = {
     // config.name = name
     const plugins = [
       // 忽略moment locale文件
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new IgnorePlugin({
+        resourceRegExp: /^\.\/locale$/,
+        contextRegExp: /moment$/
+      }),
       // 去console
       new TerserPlugin({
         terserOptions: {
@@ -56,6 +59,14 @@ module.exports = {
         ),
         threshold: 10240,
         minRatio: 0.8
+      }),
+      // brotli压缩
+      new CompressionWebpackPlugin({
+        filename: '[path][base].br',
+        algorithm: 'brotliCompress',
+        test: /\.(js|css|html|svg)$/,
+        threshold: 10240,
+        minRatio: 0.8
       })
     ]
     if (process.env.NODE_ENV === 'production') {
@@ -65,11 +76,45 @@ module.exports = {
   chainWebpack: config => {
     config.resolve.alias
       .set('@', resolve('src'))
+
+    // externals配置
+    const externals = {
+      // axios: 'axios'
+    }
+    config.externals(externals)
+    // cdn配置
+    const cdnUrl = 'https://cdn.jsdelivr.net/npm/'
+    const cdn = {
+      // 开发环境
+      dev: {
+        css: [],
+        js: [
+          // babel-polyfill
+          // `${cdnUrl}babel-polyfill@6.26.0/dist/polyfill.js`
+        ]
+      },
+      // 生产环境
+      build: {
+        css: [],
+        js: [
+          // babel-polyfill
+          // `${cdnUrl}babel-polyfill@6.26.0/dist/polyfill.min.js`
+        ]
+      }
+    }
+
+    config.plugin('html').tap(args => {
+      if (process.env.NODE_ENV === 'production') {
+        args[0].cdn = cdn.build
+      }
+      if (process.env.NODE_ENV === 'development') {
+        args[0].cdn = cdn.dev
+      }
+      return args
+    })
   },
   // css相关配置
   css: {
-    // 启用 CSS modules
-    requireModuleExtension: true,
     // 开启 CSS source maps?
     sourceMap: false,
     // css预设器配置项
