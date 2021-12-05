@@ -19,7 +19,9 @@ request.interceptors.response.use(responseHandler, errorHandler)
  */
 function requestHandler (config: AxiosRequestConfig): AxiosRequestConfig | Promise<AxiosRequestConfig> {
   const { accessToken } = store.getters
-  if (accessToken) config.headers.Authorization = `JWT ${accessToken}`
+  if (accessToken) { // @ts-ignore
+    config.headers.Authorization = `JWT ${accessToken}`
+  }
   return config
 }
 

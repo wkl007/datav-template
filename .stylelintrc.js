@@ -1,7 +1,15 @@
 module.exports = {
   extends: [
     'stylelint-config-standard',
-    'stylelint-config-rational-order'
+    'stylelint-config-rational-order',
+    'stylelint-config-html',
+    'stylelint-config-recommended-vue'
+  ],
+  overrides: [
+    {
+      files: ['**/*.less'],
+      customSyntax: 'postcss-less'
+    }
   ],
   plugins: [
     'stylelint-order'
@@ -12,7 +20,7 @@ module.exports = {
     'at-rule-no-unknown': null,
     'font-family-no-missing-generic-family-keyword': null,
     'selector-type-no-unknown': null,
-    'function-calc-no-invalid': null,
-    'selector-pseudo-element-no-unknown': null
+    'font-family-name-quotes': null,
+    'media-feature-name-no-unknown': null
   }
 }
