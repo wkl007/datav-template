@@ -143,7 +143,6 @@ module.exports = defineConfig({
     port: 8080,
     https: false,
     proxy: null, // 设置代理
-    onBeforeSetupMiddleware: ({ app }) => {}
   },
   // enabled by default if the machine has more than 1 cores
   parallel: require('os').cpus().length > 1,
