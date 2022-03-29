@@ -2669,14 +2669,15 @@ ansi-styles@^6.0.0:
   resolved "https://registry.npmmirror.com/ansi-styles/-/ansi-styles-6.1.0.tgz#87313c102b8118abd57371afab34618bf7350ed3"
   integrity sha512-VbqNsoz55SYGczauuup0MFUyXNQviSpFTj1RQtFzmQLk18qbVSpTFFGMT293rmDaQuKCT6InmbuEyUne4mTuxQ==
 
-ant-design-vue@^3.1.0-rc.2:
-  version "3.1.0-rc.2"
-  resolved "https://registry.npmmirror.com/ant-design-vue/-/ant-design-vue-3.1.0-rc.2.tgz#3b133622fab3bf3c053e417f47484d03585ec452"
-  integrity sha512-WZIvhgWsKyQnUQ+UTxDxsZZxN+DJCgGGOtfjO3sui6xroOM1YTaJzWXDSm9nvcJ7bWsrfjpZOGVBKG6JseFnGw==
+ant-design-vue@^3.1.0-rc.5:
+  version "3.1.0-rc.5"
+  resolved "https://registry.npmmirror.com/ant-design-vue/-/ant-design-vue-3.1.0-rc.5.tgz#05d2d50cec5c73d978955ca7265e3f64bcfcfbf0"
+  integrity sha512-ntHI5KqHLd4L2oT+Ab+K3vehnDoo26QVWeq1ml7d13uoYS6fLXlnCnrYcHyPGh5fstoaAqFcYm3eh6khcetF/w==
   dependencies:
     "@ant-design/colors" "^6.0.0"
     "@ant-design/icons-vue" "^6.1.0"
     "@babel/runtime" "^7.10.5"
+    "@ctrl/tinycolor" "^3.4.0"
     "@simonwep/pickr" "~1.8.0"
     array-tree-filter "^2.1.0"
     async-validator "^4.0.0"
